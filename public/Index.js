@@ -33,7 +33,7 @@ var canvas = document.getElementById('videoCanvas');
 var ctx    = canvas.getContext('2d');
 const frameTime = 1000/30;
 
-video.addEventListener('loadedmetadata', function() {
+videoThing.addEventListener('loadedmetadata', function() {
   canvas.width = videoThing.videoWidth;
   canvas.height = videoThing.videoHeight;
 });
