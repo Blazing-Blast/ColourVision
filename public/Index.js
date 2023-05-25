@@ -41,7 +41,9 @@ videoThing.addEventListener('loadedmetadata', function() {
 videoThing.addEventListener('play', function () {
     var $this = this; //cache
     (function loop() {
-        ctx.drawImage($this, 0,0, videoThing.videoWidth, videoThing.videoHeight);
+        ctx.drawImage($this, 0,0, canvas.width, canvas.height);
         setTimeout(loop, frameTime); // drawing at 30fps
+        const rgbData = ctx.getImageData(0,0,canvas.width, canvas.height);
+        console.log(rgbData);
     })();
 }, 0);
