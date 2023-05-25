@@ -1,8 +1,8 @@
 const videoThing = document.getElementById('videoThing');
 const options = document.getElementById('list');
 const debug = document.getElementById('debugtext');
-ShowDevice();
-navigator.mediaDevices.enumerateDevices()
+ShowDevice(); // Ask for camera access
+navigator.mediaDevices.enumerateDevices() //Puts cameras in drop down menu
   .then(function(devices) {
     const cameras = devices.filter(device => device.kind === 'videoinput');
     cameras.forEach(function(camera) {
