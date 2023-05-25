@@ -28,3 +28,17 @@ function ShowDevice(){
         console.error('Error accessing camera:', error);
       });
 }
+
+var canvas = document.getElementById('videoCanvas');
+var ctx    = canvas.getContext('2d');
+const fps = 30;
+
+videoThing.addEventListener('play', function () {
+    var $this = this; //cache
+    (function loop() {
+        if (!$this.paused && !$this.ended) {
+            ctx.drawImage($this, 0, 0);
+            setTimeout(loop, 1000 / fps); // drawing at 30fps
+        }
+    })();
+}, 0);
