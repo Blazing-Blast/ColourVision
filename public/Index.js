@@ -53,6 +53,10 @@ videoThing.addEventListener('play', function () {
         let message = "R: " + rgb[0] + ", G: " + rgb[1] + ", B: " + rgb[2];
         message = '%c'.concat (message);
 
+        let box = document.getElementById("colourBox");
+        box.setAttribute("style", "height:10rem; width:50rem;margin-left: 10rem;background-color:" + colour + ";");
+        box.innerText = colour;
+
         console.log(message, ('color: '+ colour));
     })();
 }, 0);

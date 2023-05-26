@@ -3,14 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="Index.css" />
+        <link rel="stylesheet" href="styles.css" />
         <title>Colour Viewer</title>
     </head>
     <body>
-        <select id="list" title="Video devices">
-        </select>
-        <video id="videoThing" style ="border: 1px solid;" autoplay></video>
+        <div class="box" id="colourBox" style="background-color: #ff0000;">#000000</div>
+        <video id="videoThing" autoplay></video>
         <canvas id="videoCanvas"></canvas>
+        <br>
+        <select id="list" title="Video devices"></select>
         <script src="Index.js"></script>
         <p id="debugtext">ola</p>
     </body>
