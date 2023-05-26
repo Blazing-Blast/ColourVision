@@ -7,12 +7,13 @@
         <title>Colour Viewer</title>
     </head>
     <body>
-        <div class="box" id="colourBox" style="background-color: #ff0000;">#000000</div>
         <video id="videoThing" autoplay style="display: none;"></video>
+        <div class="mainstuff">
+        <div class="box" id="colourBox" style="background-color: #ff0000;">#000000</div>
         <canvas id="videoCanvas"></canvas>
         <br>
         <select id="list" title="Video devices" onChange="ShowDevice(this.options[this.selectedIndex].value)"></select>
+        </div>
         <script src="Index.js"></script>
-        <p id="debugtext">ola</p>
     </body>
 </html>

@@ -70,7 +70,9 @@ function fromTuple(rgb){
 function fromRGB(r, g, b){
     return ("#" + parseInt(r, 10).toString(16) + parseInt(g, 10).toString(16) + parseInt(b, 10).toString(16));
 }
-
+function drawCrosshair(wid, high){
+  
+}
 function getColour(index, rgbData){
     const r = rgbData.data[index];
     const g = rgbData.data[index + 1];

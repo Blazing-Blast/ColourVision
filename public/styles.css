@@ -1,6 +1,10 @@
 .box{
-    height:10rem;
-    width:50rem;
-    font-size: 8rem;
+    height:5rem;
+    width:25rem;
+    font-size: 4rem;
     text-align: center;
+}
+.mainstuff{
+    margin:auto;
+    width:50%;
 }
