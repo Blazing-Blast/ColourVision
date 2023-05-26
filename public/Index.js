@@ -54,7 +54,7 @@ videoThing.addEventListener('play', function () {
         message = '%c'.concat (message);
 
         let box = document.getElementById("colourBox");
-        box.setAttribute("style", "height:10rem; width:50rem;margin-left: 10rem;background-color:" + colour + ";");
+        box.setAttribute("style", "background-color:" + colour + ";");
         box.innerText = colour;
 
         console.log(message, ('color: '+ colour));
