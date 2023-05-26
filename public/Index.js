@@ -19,7 +19,7 @@ navigator.mediaDevices.enumerateDevices() //Puts cameras in drop down menu
     console.error('Error enumerating devices:', error);
   });
 function ShowDevice(chosen){
-    const usedCamera = chosen;
+    let usedCamera = chosen;
     navigator.mediaDevices.getUserMedia({ video: { deviceId: usedCamera } })
     .then(function(stream) {
      videoThing.srcObject = stream;
@@ -50,14 +50,9 @@ videoThing.addEventListener('play', function () {
         const rgb = getAverageCentreColour(2, width, height, rgbData);
         const colour = fromTuple(rgb);
 
-        let message = "R: " + rgb[0] + ", G: " + rgb[1] + ", B: " + rgb[2];
-        message = '%c'.concat (message);
-
         let box = document.getElementById("colourBox");
         box.setAttribute("style", "background-color:" + colour + ";");
         box.innerText = colour;
-
-        console.log(message, ('color: '+ colour));
     })();
 }, 0);
 
