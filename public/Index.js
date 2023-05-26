@@ -39,11 +39,17 @@ videoThing.addEventListener('loadedmetadata', function() {
 });
 
 videoThing.addEventListener('play', function () {
+    const width = videoThing.videoWidth;
+    const height = videoThing.videoHeight;
     var $this = this; //cache
     (function loop() {
         ctx.drawImage($this, 0,0, canvas.width, canvas.height);
         setTimeout(loop, frameTime); // drawing at 30fps
-        const rgbData = ctx.getImageData(0,0,canvas.width, canvas.height);
-        console.log(rgbData);
+        const rgbData = ctx.getImageData(0,0,canvas.width, canvas.height).data;
+        const middle = 4*(width * (height/2 + 1));
+        const r = rgbData[middle];
+        const g = rgbData[middle + 1];
+        const b = rgbData[middle + 2];
+        console.log("R: " + r + ", G: " + g + ", B: " + b);
     })();
 }, 0);
