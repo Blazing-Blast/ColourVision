@@ -53,7 +53,6 @@ videoThing.addEventListener('play', function () {
         const colour = "#" + parseInt(r, 10).toString(16) + parseInt(g, 10).toString(16) + parseInt(b, 10).toString(16);
         let message = "R: " + r + ", G: " + g + ", B: " + b;
         message = '%c'.concat (message);
-        console.log("R: " + r + ", G: " + g + ", B: " + b);
         console.log(message, ('color: '+ colour));
 
         ctx.putImageData(rgbData, 0, 0);
