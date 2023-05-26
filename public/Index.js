@@ -43,23 +43,14 @@ videoThing.addEventListener('play', function () {
     const height = videoThing.videoHeight;
     var $this = this; //cache
     (function loop() {
-        ctx.drawImage($this, 0,0, canvas.width, canvas.height);
+        ctx.drawImage($this, 0,0, width, height);
         setTimeout(loop, frameTime); // drawing at 30fps
-        let rgbData = ctx.getImageData(0,0,canvas.width, canvas.height); // x = 0; y = 0; w = width; h = height;
-        const middle = rgbData.data.length/2 - width*2;
+        let rgbData = ctx.getImageData(0, 0, width, height); // x = 0; y = 0; w = width; h = height;
+        const middle = rgbData.data.length/2 - width*2; // *2 becaus every pixel has four entries (rgba)
         const r = rgbData.data[middle];
         const g = rgbData.data[middle + 1];
         const b = rgbData.data[middle + 2];
         console.log("R: " + r + ", G: " + g + ", B: " + b);
-        for (let i=0; i < middle; i++){
-          rgbData.data[i] = 255;
-          rgbData.data[i] = 0;
-          rgbData.data[i] = 200;
-        }
-
-        rgbData.data[middle] = 255;
-        rgbData.data[middle+1] = 0;
-        rgbData.data[middle+2] = 0;
 
         ctx.putImageData(rgbData, 0, 0);
     })();
