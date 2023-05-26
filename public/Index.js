@@ -92,8 +92,8 @@ function getAverageCentreColour(radius, width, height, rgbData){
     let r = 0;
     let g = 0;
     let b = 0;
-    for (let x = -half; x < radius; x++){
-        for (let y = -half; y < radius; y++){
+    for (let x = -half; x < half; x++){
+        for (let y = -half; y < half; y++){
             let xPos = centre[0] + x;
             let yPos = centre[1] + y;
             let colour = getColour(getIndex(xPos, yPos, width), rgbData);
