@@ -11,7 +11,7 @@
         <video id="videoThing" autoplay style="display: none;"></video>
         <canvas id="videoCanvas"></canvas>
         <br>
-        <select id="list" title="Video devices"></select>
+        <select id="list" title="Video devices" onChange="ShowDevice(this.options[this.selectedIndex].value)"></select>
         <script src="Index.js"></script>
         <p id="debugtext">ola</p>
     </body>
