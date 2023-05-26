@@ -56,6 +56,11 @@ videoThing.addEventListener('play', function () {
           rgbData.data[i] = 0;
           rgbData.data[i] = 200;
         }
+
+        rgbData.data[middle] = 255;
+        rgbData.data[middle+1] = 0;
+        rgbData.data[middle+2] = 0;
+
         ctx.putImageData(rgbData, 0, 0);
     })();
 }, 0);
