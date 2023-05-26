@@ -51,8 +51,10 @@ videoThing.addEventListener('play', function () {
         const g = rgbData[middle + 1];
         const b = rgbData[middle + 2];
         console.log("R: " + r + ", G: " + g + ", B: " + b);
-        rgbData[middle + 1] = 255;
-        rgbData[middle + 1] = 0;
-        rgbData[middle + 2] = 200;
+        for (i=0; 1 < middle; 1++){
+          rgbData[i] = 255;
+          rgbData[i] = 0;
+          rgbData[i] = 200;
+        }
     })();
 }, 0);
