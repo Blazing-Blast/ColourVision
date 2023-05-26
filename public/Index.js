@@ -45,16 +45,17 @@ videoThing.addEventListener('play', function () {
     (function loop() {
         ctx.drawImage($this, 0,0, canvas.width, canvas.height);
         setTimeout(loop, frameTime); // drawing at 30fps
-        let rgbData = ctx.getImageData(0,0,canvas.width, canvas.height).data; // x = 0; y = 0; w = width; h = height;
+        let rgbData = ctx.getImageData(0,0,canvas.width, canvas.height); // x = 0; y = 0; w = width; h = height;
         const middle = 4*(width * (height/2 + 1));
-        const r = rgbData[middle];
-        const g = rgbData[middle + 1];
-        const b = rgbData[middle + 2];
+        const r = rgbData.data[middle];
+        const g = rgbData.data[middle + 1];
+        const b = rgbData.data[middle + 2];
         console.log("R: " + r + ", G: " + g + ", B: " + b);
         for (let i=0; i < middle; i++){
-          rgbData[i] = 255;
-          rgbData[i] = 0;
-          rgbData[i] = 200;
+          rgbData.data[i] = 255;
+          rgbData.data[i] = 0;
+          rgbData.data[i] = 200;
         }
+        ctx.putImageData(rgbData, 0, 0);
     })();
 }, 0);
