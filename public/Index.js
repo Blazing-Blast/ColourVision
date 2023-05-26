@@ -45,16 +45,65 @@ videoThing.addEventListener('play', function () {
     (function loop() {
         ctx.drawImage($this, 0,0, width, height);
         setTimeout(loop, frameTime); // drawing at 30fps
-        let rgbData = ctx.getImageData(0, 0, width, height); // x = 0; y = 0; w = width; h = height;
-        const middle = rgbData.data.length/2 - width*2; // *2 becaus every pixel has four entries (rgba)
-        const r = rgbData.data[middle];
-        const g = rgbData.data[middle + 1];
-        const b = rgbData.data[middle + 2];
-        const colour = "#" + parseInt(r, 10).toString(16) + parseInt(g, 10).toString(16) + parseInt(b, 10).toString(16);
-        let message = "R: " + r + ", G: " + g + ", B: " + b;
-        message = '%c'.concat (message);
-        console.log(message, ('color: '+ colour));
 
-        ctx.putImageData(rgbData, 0, 0);
+        let rgbData = ctx.getImageData(0, 0, width, height); // x = 0; y = 0; w = width; h = height;
+        const rgb = getAverageCentreColour(2, width, height, rgbData);
+        const colour = fromTuple(rgb);
+
+        let message = "R: " + rgb[0] + ", G: " + rgb[1] + ", B: " + rgb[2];
+        message = '%c'.concat (message);
+
+        console.log(message, ('color: '+ colour));
     })();
 }, 0);
+
+function getCentre(width, height){
+    return [Math.floor(width/2), Math.floor(height/2)];
+}
+
+function getIndex(x, y, width){
+    return (4 * (width * y + x));
+}
+
+function fromTuple(rgb){
+  return fromRGB(rgb[0], rgb[1], rgb[2]);
+}
+
+function fromRGB(r, g, b){
+    return ("#" + parseInt(r, 10).toString(16) + parseInt(g, 10).toString(16) + parseInt(b, 10).toString(16));
+}
+
+function getColour(index, rgbData){
+    const r = rgbData.data[index];
+    const g = rgbData.data[index + 1];
+    const b = rgbData.data[index + 2];
+    return [r, g, b];
+}
+
+function getCentreColour(width, height, rgbData){
+    const middle = getCentre(width, height)
+    return getColour(getIndex(middle[0], middle[1], width), rgbData);
+}
+
+function getAverageCentreColour(radius, width, height, rgbData){
+    let half = Math.floor(radius/2);
+    let area = radius*radius;
+    let centre = getCentre(width, height);
+    let r = 0;
+    let g = 0;
+    let b = 0;
+    for (let x = -half; x < radius; x++){
+        for (let y = -half; y < radius; y++){
+            let xPos = centre[0] + x;
+            let yPos = centre[1] + y;
+            let colour = getColour(getIndex(xPos, yPos, width), rgbData);
+            r += colour[0];
+            g += colour[1];
+            b += colour[2];
+        }
+    }
+    r /= area;
+    g /= area;
+    b /= area;
+    return [Math.floor(r), Math.floor(g), Math.floor(b)];
+}
