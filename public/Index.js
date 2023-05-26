@@ -6,10 +6,9 @@ navigator.mediaDevices.enumerateDevices() //Puts cameras in drop down menu
   .then(function(devices) {
     const cameras = devices.filter(device => device.kind === 'videoinput');
     cameras.forEach(function(camera) {
-      console.log(cameras);
       const option = document.createElement('option');
       option.value = camera.deviceId;
-      option.text = 'Camera ' + (options.length + 1);
+      option.text = camera.label;
       options.appendChild(option);
     });
 
@@ -96,9 +95,9 @@ function getAverageCentreColour(radius, width, height, rgbData){
     let r = 0;
     let g = 0;
     let b = 0;
-    for (let x = -half; x < half; x++){
-        for (let y = -half; y < half; y++){
-            let xPos = centre[0] + x;
+    for (let x = -half; x < half; x++){   
+        for (let y = -half; y < half; y++){ 
+            let xPos = centre[0] + x;   
             let yPos = centre[1] + y;
             let colour = getColour(getIndex(xPos, yPos, width), rgbData);
             r += colour[0];
