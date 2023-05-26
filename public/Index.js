@@ -45,7 +45,7 @@ videoThing.addEventListener('play', function () {
     (function loop() {
         ctx.drawImage($this, 0,0, canvas.width, canvas.height);
         setTimeout(loop, frameTime); // drawing at 30fps
-        const rgbData = ctx.getImageData(0,0,canvas.width, canvas.height).data; // x = 0; y = 0; w = width; h = height;
+        let rgbData = ctx.getImageData(0,0,canvas.width, canvas.height).data; // x = 0; y = 0; w = width; h = height;
         const middle = 4*(width * (height/2 + 1));
         const r = rgbData[middle];
         const g = rgbData[middle + 1];
