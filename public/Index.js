@@ -47,6 +47,8 @@ videoThing.addEventListener('play', function () {
 
         let rgbData = ctx.getImageData(0, 0, width, height); // x = 0; y = 0; w = width; h = height;
         const rgb = getAverageCentreColour(2, width, height, rgbData);
+        center = getCentre(width, height);
+        ctx.strokeRect(center[0]-4,center[1]-4,8,8);
         const colour = fromTuple(rgb);
 
         let box = document.getElementById("colourBox");
@@ -70,9 +72,7 @@ function fromTuple(rgb){
 function fromRGB(r, g, b){
     return ("#" + parseInt(r, 10).toString(16) + parseInt(g, 10).toString(16) + parseInt(b, 10).toString(16));
 }
-function drawCrosshair(wid, high){
-  
-}
+
 function getColour(index, rgbData){
     const r = rgbData.data[index];
     const g = rgbData.data[index + 1];
