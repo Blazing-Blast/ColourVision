@@ -3,10 +3,14 @@
     width:25rem;
     font-size: 4rem;
     text-align: center;
-    float: left;
 }
-.mainstuff{
+#videoCanvas{
 }
 #list{
-
+}
+@media only screen and (max-width: 768px) {
+    .mainstuff{
+        display:flex;
+        flex-direction: column;
+    }
 }
