@@ -11,14 +11,12 @@ navigator.mediaDevices.enumerateDevices() //Puts cameras in drop down menu
       option.text = camera.label;
       options.appendChild(option);
     });
-
-    options.addEventListener('change', ShowDevice);
   })
   .catch(function(error) {
     console.error('Error enumerating devices:', error);
   });
 function ShowDevice(chosen){
-    let usedCamera = chosen;
+    var usedCamera = chosen;
     navigator.mediaDevices.getUserMedia({ video: { deviceId: usedCamera } })
     .then(function(stream) {
      videoThing.srcObject = stream;
@@ -38,19 +36,17 @@ videoThing.addEventListener('loadedmetadata', function() {
 });
 
 videoThing.addEventListener('play', function () {
-    const width = videoThing.videoWidth;
-    const height = videoThing.videoHeight;
     var $this = this; //cache
     (function loop() {
+        var width = videoThing.videoWidth;
+        var height = videoThing.videoHeight;
         ctx.drawImage($this, 0,0, width, height);
         setTimeout(loop, frameTime); // drawing at 30fps
-
         let rgbData = ctx.getImageData(0, 0, width, height); // x = 0; y = 0; w = width; h = height;
         const rgb = getAverageCentreColour(2, width, height, rgbData);
         center = getCentre(width, height);
         ctx.strokeRect(center[0]-4,center[1]-4,8,8);
         const colour = fromTuple(rgb);
-
         let box = document.getElementById("colourBox");
         box.setAttribute("style", "background-color:" + colour + ";");
         box.innerText = colour;
