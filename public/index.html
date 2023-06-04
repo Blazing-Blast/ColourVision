@@ -11,7 +11,12 @@
         <div class="mainstuff">
             <canvas id="videoCanvas"></canvas>
             <div class="box" id="colourBox" style="background-color: #ff0000;">#000000</div>
-            <select id="list" title="Video devices" onChange="ShowDevice(this.options[this.selectedIndex].value)"></select>
+            <div class="barChart" id="barChart">
+                <div id="red">R</div>
+                <div id="green">G</div>
+                <div id="blue">B</div>
+            </div>
+            <select id="list" style="width:100%" title="Video devices" onChange="ShowDevice(this.options[this.selectedIndex].value)"></select>
         </div>
         <script src="Index.js"></script>
     </body>

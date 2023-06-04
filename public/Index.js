@@ -48,9 +48,10 @@ videoThing.addEventListener('play', function () {
         setTimeout(loop, frameTime); // drawing at 30fps
         let rgbData = ctx.getImageData(0, 0, width, height); // x = 0; y = 0; w = width; h = height;
         const rgb = getAverageCentreColour(2, width, height, rgbData);
+        updateBarchart(rgb);
         center = getCentre(width, height);
         ctx.beginPath();
-        ctx.moveTo(width*0.5, 0);
+        ctx.moveTo(width*0.5, 0);       //draw the crosshairs
         ctx.lineTo(width*0.5, height);
         ctx.stroke();
         ctx.beginPath();
@@ -63,7 +64,14 @@ videoThing.addEventListener('play', function () {
         box.innerText = colour;
     })();
 }, 0);
-
+function updateBarchart(rgb){
+  red = (rgb[0]/255) * 100;
+  green = (rgb[1]/255) * 100;
+  blue = (rgb[2]/255) * 100;
+  document.getElementById('red').style.width = red.toString() + "%";
+  document.getElementById('green').style.width = green.toString() + "%";
+  document.getElementById('blue').style.width = blue.toString() + "%";
+}
 function getCentre(width, height){
     return [Math.floor(width/2), Math.floor(height/2)];
 }

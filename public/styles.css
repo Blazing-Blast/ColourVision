@@ -4,10 +4,27 @@
     font-size: 4rem;
     text-align: center;
 }
+.barChart{
+    border-width: 2px;
+    border: solid;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.barChart>div{
+    float: left:
+}
+#red{
+    background-color: red;
+}
+#green{
+    background-color: green;
+}
+#blue{
+    background-color: blue;
+}
 #videoCanvas{
     max-width: 100%;
-}
-#list{
 }
 @media only screen and (max-width: 768px) {
     .mainstuff{
