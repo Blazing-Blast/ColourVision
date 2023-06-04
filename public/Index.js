@@ -16,10 +16,14 @@ navigator.mediaDevices.enumerateDevices() //Puts cameras in drop down menu
     console.error('Error enumerating devices:', error);
   });
 function ShowDevice(chosen){
+    console.log("first debug");
+    console.log(videoThing.srcObject);
     var usedCamera = chosen;
     navigator.mediaDevices.getUserMedia({ video: { deviceId: usedCamera } })
     .then(function(stream) {
      videoThing.srcObject = stream;
+     console.log("second debug");
+     console.log(videoThing.srcObject);
     })
     .catch(function(error) {
         console.error('Error accessing camera:', error);
