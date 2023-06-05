@@ -53,14 +53,14 @@ videoThing.addEventListener('play', function () {
         ctx.beginPath();
         ctx.moveTo(width*0.5, 0);       //draw the crosshairs
         ctx.lineTo(width*0.5, height);
-        ctx.stroke();
+        ctx.stroke(); //hve a stroke
         ctx.beginPath();
         ctx.moveTo(0, height*0.5);
         ctx.lineTo(width, height*0.5);
         ctx.stroke();
         const colour = fromTuple(rgb);
         let box = document.getElementById("colourBox");
-        box.setAttribute("style", "background-color:" + colour + ";");
+        document.getElementById('colouredBox').setAttribute("style", "background-color:" + colour + ";");
         box.innerText = colour;
     })();
 }, 0);
